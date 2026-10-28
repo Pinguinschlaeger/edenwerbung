@@ -1,0 +1,79 @@
+
+/* Allgemeines Layout */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f5f5f5;
+    background: linear-gradient(135deg, #17202a, #34495e);
+
+    text-align: center;
+}
+
+/* Hauptbereich */
+.container {
+    width: min(90%, 700px);
+    padding: 40px 20px;
+}
+
+.construction-image {
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    margin: 0 auto 30px;
+    border-radius: 12px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* Animierter Ladeindikator */
+.loader {
+    width: 45px;
+    height: 45px;
+    margin: 35px auto 0;
+
+    border: 5px solid rgba(255, 255, 255, 0.25);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Fußzeile */
+footer {
+    margin-top: auto;
+    padding: 15px;
+    color: #cbd5e0;
+    font-size: 0.85rem;
+}
+
+/* Animation bei reduzierter Bewegung deaktivieren */
+@media (prefers-reduced-motion: reduce) {
+    .loader {
+        animation: none;
+    }
+}
