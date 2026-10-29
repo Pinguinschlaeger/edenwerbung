@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Formular zur Einreichung einer Minecraft-Werbung.">
+  <title>Werbung einreichen – Minecraft Werbung</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Zur Startseite">⛏ Minecraft Werbung</a>
+    <a class="back-link" href="index.html">← Zurück zur Startseite</a>
+  </header>
+
+  <main class="form-page">
+    <div class="form-heading">
+      <p class="eyebrow">DEINE IDEE EINREICHEN</p>
+      <h1>Werbeformular</h1>
+      <p>Trag die Infos ein und lade dein Werbebild hoch. Felder mit * sind erforderlich.</p>
+    </div>
+
+    <form id="ad-form">
+      <section class="form-section">
+        <h2>Deine Angaben</h2>
+
+        <div class="field">
+          <label for="player-name">Ingame-Name <span>*</span></label>
+          <input id="player-name" name="playerName" type="text" autocomplete="off"
+                 placeholder="z. B. BlockBauer42" maxlength="32" required>
+          <small>Bitte nur deinen Minecraft-Namen, keinen echten Namen.</small>
+        </div>
+
+        <div class="field">
+          <label for="email">E-Mail-Adresse <span>*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email"
+                 placeholder="du@example.com" required>
+          <small>Nur für Rückfragen zu deiner Einsendung.</small>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h2>Standort in Minecraft</h2>
+        <p class="section-description">Gib die Koordinaten des gewünschten Werbeplatzes an.</p>
+        <div class="coordinate-grid">
+          <div class="field">
+            <label for="coord-x">X-Koordinate <span>*</span></label>
+            <input id="coord-x" name="coordX" type="number" step="any" placeholder="X" required>
+          </div>
+          <div class="field">
+            <label for="coord-y">Y-Koordinate <span>*</span></label>
+            <input id="coord-y" name="coordY" type="number" step="any" placeholder="Y" required>
+          </div>
+          <div class="field">
+            <label for="coord-z">Z-Koordinate <span>*</span></label>
+            <input id="coord-z" name="coordZ" type="number" step="any" placeholder="Z" required>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h2>Plakatwand</h2>
+        <fieldset class="radio-fieldset">
+          <legend>Was ist vor Ort vorhanden? <span>*</span></legend>
+          <label class="radio-card">
+            <input type="radio" name="wallStatus" value="existing" required>
+            <span><strong>Es gibt bereits eine Wand</strong><small>Die Werbung soll an eine bestehende Wand.</small></span>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="wallStatus" value="build">
+            <span><strong>Eine Plakatwand muss gebaut werden</strong><small>Am angegebenen Standort ist noch keine Wand vorhanden.</small></span>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="wallStatus" value="unsure">
+            <span><strong>Ich bin mir nicht sicher</strong><small>Bitte bei der Planung mit mir abstimmen.</small></span>
+          </label>
+        </fieldset>
+      </section>
+
+      <section class="form-section">
+        <h2>Werbebild</h2>
+        <div class="field">
+          <label for="ad-image">Bild hochladen <span>*</span></label>
+          <input id="ad-image" name="adImage" type="file"
+                 accept="image/png,image/jpeg,image/webp,image/gif" required>
+          <small>Erlaubte Formate: PNG, JPG, WEBP oder GIF. Maximal 8 MB.</small>
+          <div id="file-preview" class="file-preview" hidden>
+            <img id="preview-image" alt="Vorschau des ausgewählten Werbebilds">
+            <div>
+              <strong id="file-name"></strong>
+              <span id="file-size" class="file-size"></span>
+            </div>
+            <button id="remove-file" class="button button-secondary button-small" type="button">Bild entfernen</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Zusätzliche Hinweise <span class="optional">(optional)</span></label>
+          <textarea id="notes" name="notes" rows="4" maxlength="1000"
+                    placeholder="Weitere Infos zur Werbung, zum Standort oder zur Wand …"></textarea>
+        </div>
+      </section>
+
+      <div class="form-actions">
+        <a class="button button-secondary" href="index.html">Abbrechen</a>
+        <button class="button button-primary" type="submit">Einreichung prüfen <span aria-hidden="true">→</span></button>
+      </div>
+
+      <p class="form-notice" id="form-notice" role="status" aria-live="polite">
+        Hinweis: Diese GitHub-Pages-Version ist zunächst nur das Frontend. Beim Absenden werden die Angaben noch nicht verschickt oder gespeichert.
+      </p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <span>Ein kleines Community-Projekt für Minecraft.</span>
+    <span>Keine offizielle Minecraft-Seite.</span>
+  </footer>
+</body>
+</html>
