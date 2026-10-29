@@ -59,6 +59,57 @@
         </div>
       </section>
 
+
+      <section class="form-section">
+        <h2>Gewünschte Größe</h2>
+        <p class="section-description">
+          Hast du eine bestimmte Vorstellung für die Größe deiner Werbung?
+          Du kannst Breite, Höhe oder beides angeben.
+        </p>
+
+        <div class="coordinate-grid">
+          <div class="field">
+            <label for="size-width">Breite <span class="optional">(optional)</span></label>
+            <input
+              id="size-width"
+              name="sizeWidth"
+              type="number"
+              min="1"
+              step="1"
+              placeholder="z. B. 5"
+            >
+            <small>Breite in Blöcken</small>
+          </div>
+
+          <div class="field">
+            <label for="size-height">Höhe <span class="optional">(optional)</span></label>
+            <input
+              id="size-height"
+              name="sizeHeight"
+              type="number"
+              min="1"
+              step="1"
+              placeholder="z. B. 3"
+            >
+            <small>Höhe in Blöcken</small>
+          </div>
+        </div>
+
+        <label class="radio-card" for="trust-us" style="margin-top: 18px;">
+          <input
+            id="trust-us"
+            name="trustUs"
+            type="checkbox"
+            value="yes"
+          >
+          <span>
+            <strong>Ich vertraue euch</strong>
+            <small>Ihr könnt Größe und Format selbst passend auswählen.</small>
+          </span>
+        </label>
+      </section>
+
+
       <section class="form-section">
         <h2>Plakatwand</h2>
         <fieldset class="radio-fieldset">

@@ -15,6 +15,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const removeFileButton = document.querySelector("#remove-file");
   const notice = document.querySelector("#form-notice");
 
+
+  const sizeWidthInput = document.querySelector("#size-width");
+  const sizeHeightInput = document.querySelector("#size-height");
+  const trustUsCheckbox = document.querySelector("#trust-us");
+
+  function updateSizePreferences() {
+    const trustUs = trustUsCheckbox.checked;
+
+    sizeWidthInput.disabled = trustUs;
+    sizeHeightInput.disabled = trustUs;
+
+    if (trustUs) {
+      sizeWidthInput.value = "";
+      sizeHeightInput.value = "";
+    }
+  }
+
+  trustUsCheckbox.addEventListener("change", updateSizePreferences);
+
+
   const MAX_FILE_SIZE = 8 * 1024 * 1024;
   const ALLOWED_TYPES = ["image/png", "image/jpeg", "image/webp", "image/gif"];
   let previewUrl = null;

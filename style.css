@@ -290,3 +290,11 @@ input[type="file"]::file-selector-button:hover { background: var(--accent-hover)
   *, *::before, *::after { transition: none !important; }
   .button:hover { transform: none; }
 }
+
+
+input:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background: #202820;
+}
+
