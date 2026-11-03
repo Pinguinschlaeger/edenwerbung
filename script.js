@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "https://edenwerbung-formular.david1997.workers.dev/";
 
   const MAX_FILE_SIZE = 8 * 1024 * 1024;
+
   const ALLOWED_TYPES = [
     "image/png",
     "image/jpeg",
@@ -33,6 +34,23 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   let previewUrl = null;
+  let isSending = false;
+
+  function message(key) {
+    return typeof translate === "function"
+      ? translate(key)
+      : key;
+  }
+
+  function setSubmitButton() {
+    if (isSending) {
+      submitButton.textContent = message("sending");
+      return;
+    }
+
+    submitButton.innerHTML =
+      `<span data-i18n="submit">${message("submit")}</span><span aria-hidden="true">→</span>`;
+  }
 
   function updateSizePreferences() {
     const trustUs = trustUsCheckbox.checked;
@@ -69,15 +87,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!ALLOWED_TYPES.includes(file.type)) {
       imageInput.value = "";
-      notice.textContent =
-        "Bitte wähle eine PNG-, JPG-, WEBP- oder GIF-Bilddatei aus.";
+      notice.textContent = message("fileInvalidType");
       return;
     }
 
     if (file.size > MAX_FILE_SIZE) {
       imageInput.value = "";
-      notice.textContent =
-        "Die Datei ist größer als 8 MB. Bitte wähle ein kleineres Bild.";
+      notice.textContent = message("fileTooLarge");
       return;
     }
 
@@ -88,13 +104,13 @@ document.addEventListener("DOMContentLoaded", () => {
       `${(file.size / (1024 * 1024)).toFixed(2)} MB`;
 
     previewContainer.hidden = false;
-    notice.textContent = "Bild ausgewählt und geprüft.";
+    notice.textContent = message("fileSelected");
   });
 
   removeFileButton.addEventListener("click", () => {
     imageInput.value = "";
     clearPreview();
-    notice.textContent = "Bild entfernt. Du kannst ein anderes auswählen.";
+    notice.textContent = message("fileRemoved");
   });
 
   form.addEventListener("submit", async event => {
@@ -105,19 +121,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const file = imageInput.files?.[0];
 
     if (!file) {
-      notice.textContent = "Bitte wähle ein Werbebild aus.";
+      notice.textContent = message("fileRequired");
       imageInput.focus();
       return;
     }
 
     if (!ALLOWED_TYPES.includes(file.type) || file.size > MAX_FILE_SIZE) {
-      notice.textContent = "Die Bilddatei ist ungültig oder zu groß.";
+      notice.textContent = message("fileInvalid");
       return;
     }
 
+    isSending = true;
     submitButton.disabled = true;
-    submitButton.textContent = "Wird versendet ...";
-    notice.textContent = "Deine Anfrage wird übermittelt ...";
+    setSubmitButton();
+    notice.textContent = message("submitting");
 
     try {
       const formData = new FormData(form);
@@ -130,11 +147,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || "Versand fehlgeschlagen.");
+        throw new Error(result.error || message("sendFailed"));
       }
 
-      notice.textContent =
-        "Vielen Dank! Deine Werbeanfrage wurde erfolgreich versendet.";
+      notice.textContent = message("success");
 
       form.reset();
       updateSizePreferences();
@@ -149,12 +165,12 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Formularfehler:", error);
 
       notice.textContent =
-        error.message || "Es ist ein Fehler beim Versand aufgetreten.";
+        error.message || message("sendError");
 
     } finally {
+      isSending = false;
       submitButton.disabled = false;
-      submitButton.innerHTML =
-        'Werbung einreichen!<span aria-hidden="true">→</span>';
+      setSubmitButton();
     }
   });
 

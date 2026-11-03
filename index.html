@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -6,55 +7,72 @@
   <meta name="description" content="Reiche deine Werbeidee für dein Geschäft ein.">
   <title>edenwerbung</title>
   <link rel="stylesheet" href="style.css">
+  <script src="language.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Startseite">⛏ Dein Werbepartner</a>
+    <a class="brand" href="index.html" aria-label="Startseite" data-i18n="brand">⛏ Dein Werbepartner</a>
     <span class="header-tag">edenwerbung</span>
+
+    <div class="language-switch" aria-label="Language selection">
+      <button type="button" data-lang="de">DE</button>
+      <span>|</span>
+      <button type="button" data-lang="en">EN</button>
+    </div>
   </header>
 
   <main class="hero">
     <div class="hero-copy">
-      <p class="eyebrow">TRAGE DEINE IDEE IN DIE WELT</p>
-      <h1>Deine Idee. Dein Geschäft. Unsere Werbung.</h1>
-      <p class="lead">
-        Willkommen hier bei endenwerbung! Du hast eine Werbeidee für dein Business,
-	weißt aber nicht, wie du diese umsetzen sollst? Kein Problem, wir helfen 
-	dir dabei! Reiche über den nachstehenden Link einfach deine Werbeidee und 
-	den gewünschten Standort ein. Dann setzen wir alles daran, deine Webung
-	möglichst Zeit und zufriedenstellend der Welt von Eden zu präsentieren. 
-	Egal ob auf schon bestehenden Struckturen, wie Häusern oder Brücken, oder 
-	an neuen Standorten, mit extra von uns erbauten Werbetafeln. Deinen Ideen 
-	und deiner Kundenreichweite sind keine Grenzen gesetzt!
+      <p class="eyebrow" data-i18n="eyebrowHome">TRAGE DEINE IDEE IN DIE WELT</p>
+
+      <h1 data-i18n="homeTitle">Deine Idee. Dein Geschäft. Unsere Werbung.</h1>
+
+      <p class="lead" data-i18n="homeLead">
+        Willkommen hier bei edenwerbung! Du hast eine Werbeidee für dein Business,
+        weißt aber nicht, wie du diese umsetzen sollst? Kein Problem, wir helfen
+        dir dabei! Reiche über den nachstehenden Link einfach deine Werbeidee und
+        den gewünschten Standort ein. Dann setzen wir alles daran, deine Werbung
+        möglichst zeitnah und zufriedenstellend in der Welt von Eden zu präsentieren.
+        Egal ob auf schon bestehenden Strukturen, wie Häusern oder Brücken, oder
+        an neuen Standorten, mit extra von uns erbauten Werbetafeln. Deinen Ideen
+        und deiner Kundenreichweite sind keine Grenzen gesetzt!
         Probier es jetzt für den Einstiegspreis von 1 Diamant aus!
       </p>
-      <p class="intro-note">
+
+      <p class="intro-note" data-i18n="introNote">
         Fülle das Formular aus, gib die Koordinaten des gewünschten Standorts an
         und lade dein Bild hoch. Sobald die Werbung aufgestellt wurde, hast du eine
-	Woche Zeit den Preis im edenwerbung-Hauptsitz in Wallis zu begleichen. Aber
-	keine Sorge, wir informieren dich diesbezüglich nocheinmal.
+        Woche Zeit den Preis im edenwerbung-Hauptsitz in Wallis zu begleichen.
+        Aber keine Sorge, wir informieren dich diesbezüglich noch einmal.
       </p>
+
       <a class="button button-primary" href="formular.html">
-        Werbung einreichen <span aria-hidden="true">→</span>
+        <span data-i18n="submitAd">Werbung einreichen</span>
+        <span aria-hidden="true">→</span>
       </a>
     </div>
 
     <aside class="hero-card" aria-label="Hinweise zur Einreichung">
       <div class="pixel-icon" aria-hidden="true">▦</div>
-      <h2>Was brauchst du?</h2>
+
+      <h2 data-i18n="requirements">Was brauchst du?</h2>
+
       <ul class="feature-list">
-        <li><span>✓</span> Deinen Ingame-Namen</li>
-        <li><span>✓</span> X-, Y- und Z-Koordinaten</li>
-        <li><span>✓</span> Info zur Plakatwand</li>
-        <li><span>✓</span> Ein Bild für deine Werbung</li>
+        <li><span>✓</span><span data-i18n="playerName">Deinen Ingame-Namen</span></li>
+        <li><span>✓</span><span data-i18n="coordinates">X-, Y- und Z-Koordinaten</span></li>
+        <li><span>✓</span><span data-i18n="wallInfo">Info zur Plakatwand</span></li>
+        <li><span>✓</span><span data-i18n="adImage">Ein Bild für deine Werbung</span></li>
       </ul>
-      <p class="small-note">Bitte keine echten Namen oder unnötigen persönlichen Daten eintragen.</p>
+
+      <p class="small-note" data-i18n="privacyNote">
+        Bitte keine echten Namen oder unnötigen persönlichen Daten eintragen.
+      </p>
     </aside>
   </main>
 
   <footer class="site-footer">
-    <span>Deine Werbung für Eden.</span>
+    <span data-i18n="footer">Deine Werbung für Eden.</span>
     <span>edenwerbung.de</span>
   </footer>
 </body>

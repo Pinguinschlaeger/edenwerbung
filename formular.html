@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -6,70 +7,103 @@
   <meta name="description" content="Formular zur Einreichung deiner Werbung.">
   <title>Werbung einreichen</title>
   <link rel="stylesheet" href="style.css">
+  <script src="language.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Zur Startseite">⛏ Dein Werbepartner</a>
-    <a class="back-link" href="index.html">← Zurück zur Startseite</a>
+    <a class="brand" href="index.html" aria-label="Zur Startseite" data-i18n="brand">⛏ Dein Werbepartner</a>
+
+    <a class="back-link" href="index.html" data-i18n="back">← Zurück zur Startseite</a>
+
+    <div class="language-switch" aria-label="Language selection">
+      <button type="button" data-lang="de">DE</button>
+      <span>|</span>
+      <button type="button" data-lang="en">EN</button>
+    </div>
   </header>
 
   <main class="form-page">
     <div class="form-heading">
-      <p class="eyebrow">DEINE IDEE EINREICHEN</p>
-      <h1>Werbeformular</h1>
-      <p>Trag die Infos ein und lade dein Werbebild hoch. Felder mit * sind erforderlich.</p>
+      <p class="eyebrow" data-i18n="formEyebrow">DEINE IDEE EINREICHEN</p>
+      <h1 data-i18n="formTitle">Werbeformular</h1>
+      <p data-i18n="formDescription">Trag die Infos ein und lade dein Werbebild hoch. Felder mit * sind erforderlich.</p>
     </div>
 
     <form id="ad-form">
       <section class="form-section">
-        <h2>Deine Angaben</h2>
+        <h2 data-i18n="yourDetails">Deine Angaben</h2>
 
         <div class="field">
-          <label for="player-name">Ingame-Name <span>*</span></label>
-          <input id="player-name" name="playerName" type="text" autocomplete="off"
-                 placeholder="z. B. BlockBauer42" maxlength="32" required>
-          <small>Bitte nur deinen Minecraft-Namen, keinen echten Namen.</small>
+          <label for="player-name">
+            <span data-i18n="playerLabel">Ingame-Name</span> <span>*</span>
+          </label>
+          <input
+            id="player-name"
+            name="playerName"
+            type="text"
+            autocomplete="off"
+            placeholder="z. B. BlockBauer42"
+            data-i18n-placeholder="playerPlaceholder"
+            maxlength="32"
+            required
+          >
+          <small data-i18n="playerHelp">Bitte nur deinen Minecraft-Namen, keinen echten Namen.</small>
         </div>
 
         <div class="field">
-          <label for="email">E-Mail-Adresse <span>*</span></label>
-          <input id="email" name="email" type="email" autocomplete="email"
-                 placeholder="du@example.com" required>
-          <small>Nur für Rückfragen zu deiner Einsendung.</small>
+          <label for="email">
+            <span data-i18n="emailLabel">E-Mail-Adresse</span> <span>*</span>
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            placeholder="du@example.com"
+            required
+          >
+          <small data-i18n="emailHelp">Nur für Rückfragen zu deiner Einsendung.</small>
         </div>
       </section>
 
       <section class="form-section">
-        <h2>Standort in Minecraft</h2>
-        <p class="section-description">Gib die Koordinaten des gewünschten Werbeplatzes an.</p>
+        <h2 data-i18n="locationTitle">Standort in Minecraft</h2>
+        <p class="section-description" data-i18n="locationDescription">
+          Gib die Koordinaten des gewünschten Werbeplatzes an.
+        </p>
+
         <div class="coordinate-grid">
           <div class="field">
-            <label for="coord-x">X-Koordinate <span>*</span></label>
+            <label for="coord-x"><span data-i18n="xLabel">X-Koordinate</span> <span>*</span></label>
             <input id="coord-x" name="coordX" type="number" step="any" placeholder="X" required>
           </div>
+
           <div class="field">
-            <label for="coord-y">Y-Koordinate <span>*</span></label>
+            <label for="coord-y"><span data-i18n="yLabel">Y-Koordinate</span> <span>*</span></label>
             <input id="coord-y" name="coordY" type="number" step="any" placeholder="Y" required>
           </div>
+
           <div class="field">
-            <label for="coord-z">Z-Koordinate <span>*</span></label>
+            <label for="coord-z"><span data-i18n="zLabel">Z-Koordinate</span> <span>*</span></label>
             <input id="coord-z" name="coordZ" type="number" step="any" placeholder="Z" required>
           </div>
         </div>
       </section>
 
-
       <section class="form-section">
-        <h2>Gewünschte Größe</h2>
-        <p class="section-description">
+        <h2 data-i18n="sizeTitle">Gewünschte Größe</h2>
+        <p class="section-description" data-i18n="sizeDescription">
           Hast du eine bestimmte Vorstellung für die Größe deiner Werbung?
           Du kannst Breite, Höhe oder beides angeben.
         </p>
 
         <div class="coordinate-grid">
           <div class="field">
-            <label for="size-width">Breite <span class="optional">(optional)</span></label>
+            <label for="size-width">
+              <span data-i18n="widthLabel">Breite</span>
+              <span class="optional" data-i18n="optional">(optional)</span>
+            </label>
             <input
               id="size-width"
               name="sizeWidth"
@@ -77,12 +111,16 @@
               min="1"
               step="1"
               placeholder="z. B. 5"
+              data-i18n-placeholder="widthPlaceholder"
             >
-            <small>Breite in Blöcken</small>
+            <small data-i18n="widthHelp">Breite in Blöcken</small>
           </div>
 
           <div class="field">
-            <label for="size-height">Höhe <span class="optional">(optional)</span></label>
+            <label for="size-height">
+              <span data-i18n="heightLabel">Höhe</span>
+              <span class="optional" data-i18n="optional">(optional)</span>
+            </label>
             <input
               id="size-height"
               name="sizeHeight"
@@ -90,83 +128,126 @@
               min="1"
               step="1"
               placeholder="z. B. 3"
+              data-i18n-placeholder="heightPlaceholder"
             >
-            <small>Höhe in Blöcken</small>
+            <small data-i18n="heightHelp">Höhe in Blöcken</small>
           </div>
         </div>
 
         <label class="radio-card" for="trust-us" style="margin-top: 18px;">
-          <input
-            id="trust-us"
-            name="trustUs"
-            type="checkbox"
-            value="yes"
-          >
+          <input id="trust-us" name="trustUs" type="checkbox" value="yes">
           <span>
-            <strong>Ich vertraue euch</strong>
-            <small>Ihr könnt Größe und Format selbst passend auswählen.</small>
+            <strong data-i18n="trustTitle">Ich vertraue euch</strong>
+            <small data-i18n="trustHelp">Ihr könnt Größe und Format selbst passend auswählen.</small>
           </span>
         </label>
       </section>
 
-
       <section class="form-section">
-        <h2>Plakatwand</h2>
+        <h2 data-i18n="wallTitle">Plakatwand</h2>
+
         <fieldset class="radio-fieldset">
-          <legend>Was ist vor Ort vorhanden? <span>*</span></legend>
+          <legend>
+            <span data-i18n="wallQuestion">Was ist vor Ort vorhanden?</span>
+            <span>*</span>
+          </legend>
+
           <label class="radio-card">
             <input type="radio" name="wallStatus" value="existing" required>
-            <span><strong>Es gibt bereits eine Wand</strong><small>Die Werbung soll an eine bestehende Wand.</small></span>
+            <span>
+              <strong data-i18n="wallExisting">Es gibt bereits eine Wand</strong>
+              <small data-i18n="wallExistingHelp">Die Werbung soll an eine bestehende Wand.</small>
+            </span>
           </label>
+
           <label class="radio-card">
             <input type="radio" name="wallStatus" value="build">
-            <span><strong>Eine Plakatwand muss gebaut werden</strong><small>Am angegebenen Standort ist noch keine Wand vorhanden.</small></span>
+            <span>
+              <strong data-i18n="wallBuild">Eine Plakatwand muss gebaut werden</strong>
+              <small data-i18n="wallBuildHelp">Am angegebenen Standort ist noch keine Wand vorhanden.</small>
+            </span>
           </label>
+
           <label class="radio-card">
             <input type="radio" name="wallStatus" value="unsure">
-            <span><strong>Ich bin mir nicht sicher</strong><small>Bitte bei der Planung mit mir abstimmen.</small></span>
+            <span>
+              <strong data-i18n="wallUnsure">Ich bin mir nicht sicher</strong>
+              <small data-i18n="wallUnsureHelp">Bitte bei der Planung mit mir abstimmen.</small>
+            </span>
           </label>
         </fieldset>
       </section>
 
       <section class="form-section">
-        <h2>Werbebild</h2>
+        <h2 data-i18n="imageTitle">Werbebild</h2>
+
         <div class="field">
-          <label for="ad-image">Bild hochladen <span>*</span></label>
-          <input id="ad-image" name="adImage" type="file"
-                 accept="image/png,image/jpeg,image/webp,image/gif" required>
-          <small>Erlaubte Formate: PNG, JPG, WEBP oder GIF. Maximal 8 MB.</small>
+          <label for="ad-image">
+            <span data-i18n="uploadLabel">Bild hochladen</span> <span>*</span>
+          </label>
+
+          <input
+            id="ad-image"
+            name="adImage"
+            type="file"
+            accept="image/png,image/jpeg,image/webp,image/gif"
+            required
+          >
+
+          <small data-i18n="uploadHelp">
+            Erlaubte Formate: PNG, JPG, WEBP oder GIF. Maximal 8 MB.
+          </small>
+
           <div id="file-preview" class="file-preview" hidden>
-            <img id="preview-image" alt="Vorschau des ausgewählten Werbebilds">
+            <img id="preview-image" alt="Vorschau des ausgewählten Werbebilds" data-i18n-alt="previewAlt">
+
             <div>
               <strong id="file-name"></strong>
               <span id="file-size" class="file-size"></span>
             </div>
-            <button id="remove-file" class="button button-secondary button-small" type="button">Bild entfernen</button>
+
+            <button id="remove-file" class="button button-secondary button-small" type="button" data-i18n="removeImage">
+              Bild entfernen
+            </button>
           </div>
         </div>
 
         <div class="field">
-          <label for="notes">Zusätzliche Hinweise <span class="optional">(optional)</span></label>
-          <textarea id="notes" name="notes" rows="4" maxlength="1000"
-                    placeholder="Weitere Infos zur Werbung, zum Standort oder zur Wand …"></textarea>
+          <label for="notes">
+            <span data-i18n="notesLabel">Zusätzliche Hinweise</span>
+            <span class="optional" data-i18n="optional">(optional)</span>
+          </label>
+
+          <textarea
+            id="notes"
+            name="notes"
+            rows="4"
+            maxlength="1000"
+            placeholder="Weitere Infos zur Werbung, zum Standort oder zur Wand …"
+            data-i18n-placeholder="notesPlaceholder"
+          ></textarea>
         </div>
       </section>
 
       <div class="form-actions">
-        <a class="button button-secondary" href="index.html">Abbrechen</a>
-        <button class="button button-primary" type="submit">Werbung einreichen!<span aria-hidden="true">→</span></button>
+        <a class="button button-secondary" href="index.html" data-i18n="cancel">Abbrechen</a>
+
+        <button class="button button-primary" type="submit">
+          <span data-i18n="submit">Werbung einreichen!</span>
+          <span aria-hidden="true">→</span>
+        </button>
       </div>
 
-      <p class="form-notice" id="form-notice" role="status" aria-live="polite">
-        Hinweis: Mit Abschicken des Formulars gehst du einen Rechtsbindenden Kaufvertrag ein! 
-	Nach Umsetzung des Auftrages senden wir dir eine Rechnung über 1 Diamanten an deine angegebene E-Mail Adresse zu!
+      <p class="form-notice" id="form-notice" role="status" aria-live="polite" data-i18n="legalNotice">
+        Hinweis: Mit Abschicken des Formulars gehst du einen rechtsbindenden Kaufvertrag ein!
+        Nach Umsetzung des Auftrags senden wir dir eine Rechnung über 1 Diamanten an deine
+        angegebene E-Mail-Adresse zu!
       </p>
     </form>
   </main>
 
   <footer class="site-footer">
-    <span>Deine Werbung für Eden.</span>
+    <span data-i18n="footer">Deine Werbung für Eden.</span>
     <span>edenwerbung.de</span>
   </footer>
 </body>
